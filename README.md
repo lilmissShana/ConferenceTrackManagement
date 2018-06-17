@@ -1,6 +1,6 @@
 #How to Build
 
-gradle build
+``gradle build``
 This build task compiles the code, builds a jar file in build/libs directory, and executes the tests.
 
 
