@@ -2,7 +2,13 @@
 
 ``gradle build
 ``
-
+# How to Run
+To enter talks via terminal
+``java -jar build/libs/ConferenceTrackManagement.jar 
+``
+or 
+``java -jar build/libs/ConferenceTrackManagement.jar $path-to-test-file
+``
 This build task compiles the code, builds a jar file in build/libs directory, and executes the tests.
 
 
