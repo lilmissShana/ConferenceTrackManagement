@@ -1,4 +1,4 @@
-package sd.co.uk;
+package sd.co.uk.model;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +24,6 @@ public class TrackTest {
         LocalTime m_start_time = LocalTime.parse("09:00");
         LocalTime a_start_time = LocalTime.parse("13:00");
 
-        LocalTime lunch_start_time = LocalTime.parse("12:00");
         
 
         morningSession = new Session(m_start_time);
@@ -37,7 +36,7 @@ public class TrackTest {
         afternoonSession.getTalkList().add(t5);
         afternoonSession.getTalkList().add(t6);
 
-        track = new Track("Track 1", morningSession, afternoonSession, lunch_start_time);
+        track = new Track("Track 1", morningSession, afternoonSession);
 
     }
 

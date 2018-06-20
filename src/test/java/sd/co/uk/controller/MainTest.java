@@ -1,10 +1,12 @@
-package sd.co.uk;
+package sd.co.uk.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import sd.co.uk.controller.Main;
 
 public class MainTest {
 

@@ -1,6 +1,8 @@
-package sd.co.uk;
+package sd.co.uk.util;
 
 import java.util.Comparator;
+
+import sd.co.uk.model.Talk;
 
 public class TalkComparator implements Comparator<Talk> {
 

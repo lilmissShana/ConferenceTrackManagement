@@ -1,4 +1,4 @@
-package sd.co.uk;
+package sd.co.uk.model;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,8 @@ import java.time.LocalTime;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import sd.co.uk.model.Talk;
 
 public class TalkTest {
 

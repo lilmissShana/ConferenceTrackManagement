@@ -1,4 +1,4 @@
-package sd.co.uk;
+package sd.co.uk.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import sd.co.uk.model.Talk;
+import sd.co.uk.model.Track;
+import sd.co.uk.view.Conference;
 
 public class Main {
 

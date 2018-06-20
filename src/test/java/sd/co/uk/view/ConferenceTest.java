@@ -1,4 +1,4 @@
-package sd.co.uk;
+package sd.co.uk.view;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,6 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import sd.co.uk.model.Talk;
+import sd.co.uk.model.Track;
+import sd.co.uk.view.Conference;
 
 public class ConferenceTest {
 

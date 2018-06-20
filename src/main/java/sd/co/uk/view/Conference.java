@@ -1,9 +1,14 @@
-package sd.co.uk;
+package sd.co.uk.view;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+
+import sd.co.uk.model.Session;
+import sd.co.uk.model.Talk;
+import sd.co.uk.model.Track;
+import sd.co.uk.util.TalkComparator;
 
 public class Conference {
 
