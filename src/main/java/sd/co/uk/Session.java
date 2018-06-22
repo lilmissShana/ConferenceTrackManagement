@@ -1,4 +1,4 @@
-package sd.co.uk;
+package sd.co.uk; // todo: move to a ".domain" package
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ public class Session {
     private LocalTime sessionStartTime;
     private LocalTime sessionEndTime;
 
+    // Rename to be scheduledTalkList (as when we put them in a Session they are "schdeuled")
     private ArrayList<Talk> talkList;
 
     /**
@@ -46,6 +47,7 @@ public class Session {
     /**
      * @return the total session length as a double
      */
+    // TODO: rename to getSessionDuration (its a more time-y name)
     public int getSessionLength() {
 
         int session_length = 0;
@@ -57,5 +59,6 @@ public class Session {
     }
 
 
+    // TODO: add a toString, hashcode and equals
 
 }

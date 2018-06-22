@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+// TODO: Consider using hamcrest to make your tests read really nicely
 public class ConferenceTest {
 
     ArrayList<Talk> talkList;

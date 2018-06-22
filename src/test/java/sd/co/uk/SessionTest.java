@@ -10,6 +10,7 @@ import org.junit.Test;
 public class SessionTest {
 
     Session session;
+
     @Before
     public void setUp() throws Exception {
 

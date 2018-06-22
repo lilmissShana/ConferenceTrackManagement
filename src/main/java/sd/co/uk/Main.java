@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    // TODO: add a ConferenceCommittee class which will absorb the organiseTalk() method (make it static) and output a Conference
     static ArrayList<Talk> talkList = new ArrayList<Talk>();
 
     public static void main(String[] args) throws Exception {
@@ -64,7 +65,7 @@ public class Main {
         try {
             trackList = conference.scheduleTalks(talkList);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+            // TODO Auto-generated catch block - remove this comment
             e.printStackTrace();
         }
 
@@ -77,6 +78,7 @@ public class Main {
 
     }
 
+    // You could put this logic into the Talk Class
     public static void organiseTalk(String line) throws Exception {
         Talk talk;
 
