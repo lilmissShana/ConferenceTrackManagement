@@ -84,7 +84,6 @@ public class Scheduler {
      */
     private ArrayList<Talk> BuildMorningSession(Session morningSession,
             ArrayList<Talk> unscheduledTalksList) {
-        System.out.println("here - at start");
         Iterator<Talk> iterator = unscheduledTalksList.iterator();
         while (iterator.hasNext()) {
 
@@ -107,51 +106,64 @@ public class Scheduler {
         }
         // if morning session has gaps - try again to fill it
         double session_gap = MORNING_LIMIT - morningSession.getSessionDuration();
+        if (session_gap > 0) {
+            this.ReOrganiseMorningSession(morningSession, unscheduledTalksList);
+        }
+        return unscheduledTalksList;
+    }
+
+    /**
+     * Re organise morning session to ensure it is a full session
+     * 
+     * @param morningSession
+     * @param unscheduledTalksList
+     * @return ArrayList<Talk>
+     */
+    private ArrayList<Talk> ReOrganiseMorningSession(Session morningSession,
+            ArrayList<Talk> unscheduledTalksList) {
+
+
+        double session_gap = MORNING_LIMIT - morningSession.getSessionDuration();
         ArrayList<ScheduledTalk> scheduledTalkList = morningSession.getScheduledTalkList();
 
-        if (session_gap != 0) {
-            boolean gapToFill = true;
+        boolean gapToFill = true;
 
-            while (gapToFill) {
-                ScheduledTalk removedScheduledTalk;
-                if (scheduledTalkList.size() != 0) {
-                    removedScheduledTalk = scheduledTalkList.remove(scheduledTalkList.size() - 1);
-                    session_gap += removedScheduledTalk.getduration().getTalkDurationAsInt();
-                    
-                    Iterator<Talk> unscheduledTalkListIterator = unscheduledTalksList.iterator();
-                    while (unscheduledTalkListIterator.hasNext()) {
+        while (gapToFill) {
+            ScheduledTalk removedScheduledTalk;
+            if (scheduledTalkList.size() != 0) {
+                removedScheduledTalk = scheduledTalkList.remove(scheduledTalkList.size() - 1);
+                session_gap += removedScheduledTalk.getduration().getTalkDurationAsInt();
 
-                        Talk unscheduledTalk = unscheduledTalkListIterator.next();
-                        LocalTime startTime = morningSession.getSessionStartTime();
+                Iterator<Talk> unscheduledTalkListIterator = unscheduledTalksList.iterator();
+                while (unscheduledTalkListIterator.hasNext()) {
 
-                        int perposedDuration =
-                                morningSession.getSessionDuration()
-                                        + unscheduledTalk.getduration().getTalkDurationAsInt();
-                        if (perposedDuration <= MORNING_LIMIT) {
+                    Talk unscheduledTalk = unscheduledTalkListIterator.next();
+                    LocalTime startTime = morningSession.getSessionStartTime();
 
-                            // update the session with new talk
-                            LocalTime talkStartTime =
-                                    startTime.plusMinutes(morningSession.getSessionDuration());
-                        
-                            ScheduledTalk scheduledTalk =
-                                    new ScheduledTalk(unscheduledTalk.getTitle(),
-                                            unscheduledTalk.getduration(), talkStartTime);
-                            morningSession.getScheduledTalkList().add(scheduledTalk);
-                            session_gap -= unscheduledTalk.getduration().getTalkDurationAsInt();
-                            unscheduledTalkListIterator.remove();
-                        }
+                    int perposedDuration = morningSession.getSessionDuration()
+                            + unscheduledTalk.getduration().getTalkDurationAsInt();
+                    if (perposedDuration <= MORNING_LIMIT) {
+
+                        // update the session with new talk
+                        LocalTime talkStartTime =
+                                startTime.plusMinutes(morningSession.getSessionDuration());
+
+                        ScheduledTalk scheduledTalk = new ScheduledTalk(unscheduledTalk.getTitle(),
+                                unscheduledTalk.getduration(), talkStartTime);
+                        morningSession.getScheduledTalkList().add(scheduledTalk);
+                        session_gap -= unscheduledTalk.getduration().getTalkDurationAsInt();
+                        unscheduledTalkListIterator.remove();
                     }
-                    Talk talk = new Talk(removedScheduledTalk.getTitle(),
-                            removedScheduledTalk.getduration());
-                    unscheduledTalksList.add(talk);
                 }
+                Talk talk = new Talk(removedScheduledTalk.getTitle(),
+                        removedScheduledTalk.getduration());
+                unscheduledTalksList.add(talk);
+            }
 
-                if (session_gap <= 0) {
-                    gapToFill = false;
-                }
+            if (session_gap <= 0) {
+                gapToFill = false;
             }
         }
-
         return unscheduledTalksList;
 
     }
@@ -183,7 +195,6 @@ public class Scheduler {
                 afternoonSession.getScheduledTalkList().add(scheduledTalk);
                 unscheduledIterator.remove();
             }
-
         }
         return unscheduledTalkList;
 
