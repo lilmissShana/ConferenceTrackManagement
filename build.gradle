@@ -20,7 +20,7 @@ jar {
   manifest {
     attributes(
       'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-      'Main-Class': 'sd.co.uk.Main'
+      'Main-Class': 'sd.co.uk.conference.Main'
     )
   }
 }

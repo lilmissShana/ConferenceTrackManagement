@@ -28,3 +28,13 @@ target/classes/
 *.bin
 
 *.class
+
+*.lock
+
+*.lock
+
+*.idx
+
+*.tar
+
+.gradle/4.8/fileContent/fileContent.lock
