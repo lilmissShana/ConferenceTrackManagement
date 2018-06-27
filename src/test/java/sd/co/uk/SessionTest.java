@@ -24,6 +24,8 @@ public class SessionTest {
     }
 
 
+    // TODO: add lots more invariant tests - but make sure not to test Talks as they are tested in the TalkTest class.  Try and think about what a session can and can't be, but stick to what the code needs to do - don't add things you don't need
+
     @Test
     public void testGetSessionLength() {
         double actualTime = session.getSessionLength();

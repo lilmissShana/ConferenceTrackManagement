@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+// TODO: the aim is that the tests in this class are very few, because that means you've pulled encapsulated things nicely
 public class MainTest {
 
     String testFile;
@@ -16,7 +17,7 @@ public class MainTest {
 
     }
 
-    // test to check reading input from file
+    // TODO: Remove this comment, as the test name will tell you what you need to know: "test to check reading input from file"
     @Test
     public void testFileReading() throws Exception {
         String[] args = new String[1];
@@ -25,7 +26,7 @@ public class MainTest {
 
     }
 
-    // test to check exception is thrown if input file cant be found
+    // TODO: Remove this comment, as the test name will tell you what you need to know: "test to check exception is thrown if input file cant be found"
     @Test(expected = Exception.class)
     public void givenThatFileDoesNotExistThrowException() throws Exception {
         String[] args = new String[1];
@@ -34,14 +35,14 @@ public class MainTest {
     try{
             Main.main(args);
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "File cant be found - " + testFile + "test");
+            assertEquals(e.getMessage(), "File cant be found - " + testFile + "test"); // TODO: check spelling in assertion messages
             throw e;
         }
         fail("Exception not thrown");
 
     }
 
-    // test to check exception is thrown if inot enough talks for conference
+    // TODO: Remove this comment, as the test name will tell you what you need to know: "test to check exception is thrown if inot enough talks for conference"
     @Test(expected = Exception.class)
     public void testOrganiseTalkExceptionTrown() throws Exception {
         // single talk should throw exception
@@ -50,7 +51,7 @@ public class MainTest {
             
             Main.organiseTalk(title);
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "Cant organise talk - " + title);
+            assertEquals(e.getMessage(), "Cant organise talk - " + title); // TODO: check spelling in assertion messages
             throw e;
         }
         fail("Exception not thrown");

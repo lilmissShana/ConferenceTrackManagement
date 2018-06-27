@@ -22,7 +22,9 @@ public class TalkTest {
         assertEquals(talk.getStartTime(), null);
     }
 
-    // TODO: it's remove this - it's over the top
+    // TODO: add more invariant tests - so that you can read this test class and get a good idea of what a Talk is and isn't
+
+    // TODO: I'd remove this - it's over the top
     @Test
     public void testToString() {
         LocalTime time = LocalTime.now();

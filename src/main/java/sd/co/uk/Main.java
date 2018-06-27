@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// TODO: the contents of this class should be very small - pull all the logic out into classes with meaningful names
+// TODO: find a better name for this then "Main" - take inspiration from the conference-planning domain
 public class Main {
 
     // TODO: add a ConferenceCommittee class which will absorb the organiseTalk() method (make it static) and output a Conference
@@ -78,7 +80,7 @@ public class Main {
 
     }
 
-    // You could put this logic into the Talk Class
+    // TODO: You could put this logic into the Talk Class
     public static void organiseTalk(String line) throws Exception {
         Talk talk;
 
