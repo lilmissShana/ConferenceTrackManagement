@@ -1,5 +1,6 @@
 package sd.co.uk.util;
 
+// TODO: you can make this an inner class of Talk.
 public enum TalkDuration {
 
     LIGHTING (5),

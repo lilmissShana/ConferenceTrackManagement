@@ -51,7 +51,7 @@ public class Session {
         int session_length = 0;
 
         for (ScheduledTalk scheduledTalk : scheduledTalkList) {
-            session_length += scheduledTalk.getduration().getTalkDurationAsInt();
+            session_length += scheduledTalk.getDuration().getTalkDurationAsInt();
         }
         return session_length;
     }

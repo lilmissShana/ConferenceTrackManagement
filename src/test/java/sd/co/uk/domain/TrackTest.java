@@ -59,10 +59,10 @@ public class TrackTest {
         double expectedTime = 0;
 
         for (ScheduledTalk t : track.getAfternoon_session().getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         for (ScheduledTalk t : track.getMorning_session().getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }

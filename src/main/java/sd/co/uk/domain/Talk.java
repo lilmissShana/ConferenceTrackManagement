@@ -12,7 +12,6 @@ public class Talk {
     // TODO: you could then encapsulate the types of talk (Lightning and normal or whatever its
     // called in the types, which will read really nicely)
 
-
     /**
      * @param duration
      * @param title
@@ -27,11 +26,10 @@ public class Talk {
 
     }
 
-
     /**
      * @return the duration
      */
-    public TalkDuration getduration() {
+    public TalkDuration getDuration() {
         return duration;
     }
 
@@ -41,7 +39,6 @@ public class Talk {
     public String getTitle() {
         return title;
     }
-
 
     /*
      * (non-Javadoc)

@@ -33,7 +33,7 @@ public final class ScheduledTalk extends Talk {
      */
     public LocalTime getEndTime() {
         
-        LocalTime endTime = this.startTime.plusMinutes(getduration().getTalkDurationAsInt());
+        LocalTime endTime = this.startTime.plusMinutes(getDuration().getTalkDurationAsInt());
         return endTime;
     }
 

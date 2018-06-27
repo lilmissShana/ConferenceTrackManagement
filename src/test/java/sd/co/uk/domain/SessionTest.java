@@ -32,7 +32,7 @@ public class SessionTest {
         double expectedTime = 0;
 
         for (ScheduledTalk t : session.getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }
