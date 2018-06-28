@@ -11,6 +11,7 @@ import sd.co.uk.domain.Talk;
 import sd.co.uk.domain.Track;
 import sd.co.uk.util.TalkComparator;
 
+// TODO: rename this class "ConferenceAutoScheduler"
 public class Scheduler {
 
 
