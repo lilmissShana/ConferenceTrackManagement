@@ -24,6 +24,7 @@ public class SessionTest {
         session.getScheduledTalkList().add(t2);
     }
 
+    // TODO: add lots more invariant tests - but make sure not to test Talks as they are tested in the TalkTest class.  Try and think about what a session can and can't be, but stick to what the code needs to do - don't add things you don't need
 
     @Test
     public void testGetSessionLength() {
@@ -31,7 +32,7 @@ public class SessionTest {
         double expectedTime = 0;
 
         for (ScheduledTalk t : session.getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }

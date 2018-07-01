@@ -44,12 +44,14 @@ public final class Track {
      * @param name
      */
     public Track(String name) {
+
         this(name, new Session(morningStartTime), new Session(afternoonStartTime));
     }
 
     /**
      * @return the morning_session
      */
+    // TODO: method naming!
     public Session getMorning_session() {
         Session session = morningSession;
         return session;
@@ -59,6 +61,7 @@ public final class Track {
     /**
      * @return the afternoon_session
      */
+    // TODO: method naming!
     public Session getAfternoon_session() {
         Session session = afternoonSession;
         return session;
@@ -77,6 +80,7 @@ public final class Track {
     /**
      * @return the start_time
      */
+    // TODO: method naming!
     public LocalTime getStart_time() {
         return morningSession.getSessionStartTime();
     }

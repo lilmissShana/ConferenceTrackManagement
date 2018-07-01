@@ -7,6 +7,7 @@ import sd.co.uk.util.TalkDuration;
 
 public class ConferenceCommittee {
 
+    // TODO: rename "organiseTalk" to "acceptTalkSubmission", rename "talkList" to "currentlyPlannedTalks" and rename "line" to "talkSubmissionToProcess"?
     public static ArrayList<Talk> organiseTalk(String line, ArrayList<Talk> talkList)
             throws Exception {
         Talk talk;

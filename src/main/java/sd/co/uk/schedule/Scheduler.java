@@ -11,6 +11,7 @@ import sd.co.uk.domain.Talk;
 import sd.co.uk.domain.Track;
 import sd.co.uk.util.TalkComparator;
 
+// TODO: rename this class "ConferenceAutoScheduler"
 public class Scheduler {
 
 
@@ -36,7 +37,7 @@ public class Scheduler {
         int totalTalksLength = 0;
         // calculate length of combined talks
         for (Talk talk : unscheduledTalkList) {
-            totalTalksLength += talk.getduration().getTalkDurationAsInt();
+            totalTalksLength += talk.getDuration().getTalkDurationAsInt();
         }
         int total_number_of_tracks = getTracksNeeded(totalTalksLength);
 
@@ -91,14 +92,14 @@ public class Scheduler {
             LocalTime startTime = morningSession.getSessionStartTime();
 
             int session_length =
-                    (morningSession.getSessionDuration() + talk.getduration().getTalkDurationAsInt());
+                    (morningSession.getSessionDuration() + talk.getDuration().getTalkDurationAsInt());
             if (session_length <= MORNING_LIMIT) {
 
                 // update the session with new track
                 LocalTime talkStartTime =
                         startTime.plusMinutes(morningSession.getSessionDuration());
                 ScheduledTalk scheduledTalk =
-                        new ScheduledTalk(talk.getTitle(), talk.getduration(), talkStartTime);
+                        new ScheduledTalk(talk.getTitle(), talk.getDuration(), talkStartTime);
                 morningSession.getScheduledTalkList().add(scheduledTalk);
                 iterator.remove();
             }
@@ -132,7 +133,7 @@ public class Scheduler {
             ScheduledTalk removedScheduledTalk;
             if (scheduledTalkList.size() != 0) {
                 removedScheduledTalk = scheduledTalkList.remove(scheduledTalkList.size() - 1);
-                session_gap += removedScheduledTalk.getduration().getTalkDurationAsInt();
+                session_gap += removedScheduledTalk.getDuration().getTalkDurationAsInt();
 
                 Iterator<Talk> unscheduledTalkListIterator = unscheduledTalksList.iterator();
                 while (unscheduledTalkListIterator.hasNext()) {
@@ -141,7 +142,7 @@ public class Scheduler {
                     LocalTime startTime = morningSession.getSessionStartTime();
 
                     int perposedDuration = morningSession.getSessionDuration()
-                            + unscheduledTalk.getduration().getTalkDurationAsInt();
+                            + unscheduledTalk.getDuration().getTalkDurationAsInt();
                     if (perposedDuration <= MORNING_LIMIT) {
 
                         // update the session with new talk
@@ -149,14 +150,14 @@ public class Scheduler {
                                 startTime.plusMinutes(morningSession.getSessionDuration());
 
                         ScheduledTalk scheduledTalk = new ScheduledTalk(unscheduledTalk.getTitle(),
-                                unscheduledTalk.getduration(), talkStartTime);
+                                unscheduledTalk.getDuration(), talkStartTime);
                         morningSession.getScheduledTalkList().add(scheduledTalk);
-                        session_gap -= unscheduledTalk.getduration().getTalkDurationAsInt();
+                        session_gap -= unscheduledTalk.getDuration().getTalkDurationAsInt();
                         unscheduledTalkListIterator.remove();
                     }
                 }
                 Talk talk = new Talk(removedScheduledTalk.getTitle(),
-                        removedScheduledTalk.getduration());
+                        removedScheduledTalk.getDuration());
                 unscheduledTalksList.add(talk);
             }
 
@@ -185,13 +186,13 @@ public class Scheduler {
             LocalTime startTime = afternoonSession.getSessionStartTime();
 
             int temp_total = afternoonSession.getSessionDuration()
-                    + talk.getduration().getTalkDurationAsInt();
+                    + talk.getDuration().getTalkDurationAsInt();
             if (temp_total < AFTERNOON_LIMIT) {
                 // update the session with new talk
                 LocalTime talkStartTime =
                         startTime.plusMinutes(afternoonSession.getSessionDuration());
                 ScheduledTalk scheduledTalk =
-                        new ScheduledTalk(talk.getTitle(), talk.getduration(), talkStartTime);
+                        new ScheduledTalk(talk.getTitle(), talk.getDuration(), talkStartTime);
                 afternoonSession.getScheduledTalkList().add(scheduledTalk);
                 unscheduledIterator.remove();
             }

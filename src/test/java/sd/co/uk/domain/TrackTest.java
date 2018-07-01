@@ -43,6 +43,7 @@ public class TrackTest {
     }
 
 
+    // TODO: you can make this "assertTrue", and some of the ones below also
     @Test
     public void testGetMorning_session() {
         assertEquals(true, track.getMorning_session().equals(morningSession));
@@ -59,10 +60,10 @@ public class TrackTest {
         double expectedTime = 0;
 
         for (ScheduledTalk t : track.getAfternoon_session().getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         for (ScheduledTalk t : track.getMorning_session().getScheduledTalkList()) {
-            expectedTime += t.getduration().getTalkDurationAsInt();
+            expectedTime += t.getDuration().getTalkDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }
