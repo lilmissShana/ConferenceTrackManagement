@@ -20,13 +20,17 @@ public final class Track {
      * @param morningSession
      * @param afternoonSession
      */
-    public Track(String name, Session morningSession, Session afternoonSession) {
-        if (name.isEmpty() || name == null) {
+    private Track(String name, Session morningSession, Session afternoonSession) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException("Name can't be null or empty");
 
+        }
+        if (name == null) {
+            throw new NullPointerException("Name can't be null or empty");
         } else {
             this.name = name;
         }
+
         if (morningSession == null) {
             throw new IllegalArgumentException("morningSession can't be null");
         } else {
@@ -86,10 +90,10 @@ public final class Track {
     /**
      * @return the total track length without the network event
      */
-    public double getTotalTalksDuration() {
+    public int getTotalTalksDuration() {
 
-        double morning_length = morningSession.getSessionDuration();
-        double afternoon_length = afternoonSession.getSessionDuration();
+        int morning_length = morningSession.getSessionDuration();
+        int afternoon_length = afternoonSession.getSessionDuration();
         return morning_length + afternoon_length;
 
     }
@@ -99,12 +103,12 @@ public final class Track {
      */
     public LocalTime getNetworkEventStartTime() {
 
-        double endtime = afternoonSession.getSessionDuration();
-        if (endtime <= 180) {
-            return networkEventStartTime;
-        } else {
-            return networkEventStartTime.plusMinutes(60);
-        }
+        double sessionDuration = afternoonSession.getSessionDuration();
+        LocalTime networkStartTime =
+                afternoonSession.getSessionStartTime()
+                        .plusMinutes((long) (sessionDuration));
+
+        return networkStartTime;
 
     }
 

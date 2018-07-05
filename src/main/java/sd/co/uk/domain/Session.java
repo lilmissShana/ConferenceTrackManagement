@@ -30,8 +30,6 @@ public class Session {
      * @return the sessionEndTime
      */
     public LocalTime getSessionEndTime() {
-
-        // to do: run though
         sessionEndTime = sessionStartTime.plusMinutes(getSessionDuration());
         return sessionEndTime;
     }

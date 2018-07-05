@@ -1,6 +1,9 @@
 package sd.co.uk.domain;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
+import org.junit.Test;
 
 import sd.co.uk.domain.Talk.Duration;
 
@@ -9,20 +12,35 @@ import sd.co.uk.domain.Talk.Duration;
 public class TalkTest {
 
     Talk talk;
+    String title;
     @Before
     public void setUp() throws Exception {
-        talk = new Talk("Title", Duration.FORTY_FIVE_MINS);
+        title = "Title";
+        talk = new Talk(title, Duration.FORTY_FIVE_MINS);
     }
 
-    // TODO: these kinds of invariant test are good (and nice title) but we should really set up the class hierarchy so that this can't happen (see comments on the talk class)
-    // TODO: you can now remove this test all together as because you've subclassed to schediuled talk this method doesnt even exist on Talk and so the compiler does this check for you.
-//    @Test
-//    public void givenThatNoStartTimeIsSetReturnNull() {
-//        assertEquals(talk.getStartTime(), null);
-//    }
+    @Test
+    public void givenThatTalkExistGetDuration() {
+        assertTrue(talk.getDuration().equals(Duration.FORTY_FIVE_MINS));
 
+    }
 
+    @Test
+    public void givenThatTalkExistGetDurationAsInt() {
+        assertTrue(talk.getDurationAsInt() == 45);
 
-    // TODO: add more invariant tests - so that you can read this test class and get a good idea of what a Talk is and isn't
+    }
+
+    @Test
+    public void givenThatTalkExistGetTitle() {
+        assertTrue(talk.getTitle().equals(title));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenEmptyStringAsTitleWhenTalkConstructedErrorIsThrown() {
+        Talk talk = new Talk("", Duration.FIFTEEN_MINS);
+
+    }
 
 }

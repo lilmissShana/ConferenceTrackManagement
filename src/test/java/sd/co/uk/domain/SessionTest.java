@@ -1,6 +1,7 @@
 package sd.co.uk.domain;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalTime;
 
@@ -12,29 +13,51 @@ import sd.co.uk.domain.Talk.Duration;
 public class SessionTest {
 
     Session session;
+    LocalTime sessionStartTime;
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
         ScheduledTalk t1 = new ScheduledTalk("talk1", Duration.SIXTY_MIN, LocalTime.NOON);
         ScheduledTalk t2 = new ScheduledTalk("talk2", Duration.LIGHTING, LocalTime.NOON);
 
-        LocalTime m_start_time = LocalTime.parse("09:00");
-        session = new Session(m_start_time);
+        sessionStartTime = LocalTime.parse("09:00");
+        session = new Session(sessionStartTime);
         session.getScheduledTalkList().add(t1);
         session.getScheduledTalkList().add(t2);
     }
 
-    // TODO: add lots more invariant tests - but make sure not to test Talks as they are tested in the TalkTest class.  Try and think about what a session can and can't be, but stick to what the code needs to do - don't add things you don't need
-
     @Test
-    public void testGetSessionLength() {
-        double actualTime = session.getSessionDuration();
-        double expectedTime = 0;
+    public void givenValidSessionWhenGetSessionDurationCalledShouldReturnCorrectDuration() {
+        double actualDuration = session.getSessionDuration();
+        double sessionDuration = 0;
 
         for (ScheduledTalk talk : session.getScheduledTalkList()) {
-            expectedTime += talk.getDurationAsInt();
+            sessionDuration += talk.getDurationAsInt();
         }
-        assertEquals(expectedTime, actualTime, 0.1);
+        assertEquals(sessionDuration, actualDuration, 0.1);
+    }
+
+    @Test
+    public void givenValidSessionWhenGetSessionStartTimeCalledShouldReturnCorrectStartTime() {
+        LocalTime actualStartTime = session.getSessionStartTime();
+
+        assertTrue(actualStartTime.equals(sessionStartTime));
+    }
+
+    @Test
+    public void givenValidSessionWhenGetSessionEndTimeCalledShouldReturnCorrectEndTime() {
+        LocalTime actualEndTime = session.getSessionEndTime();
+
+        assertTrue(actualEndTime.equals(sessionStartTime.plusMinutes(
+                Duration.SIXTY_MIN.getDurationAsInt() + Duration.LIGHTING.getDurationAsInt())));
+    }
+
+    @Test
+    public void givenSessionWithNoTalksWhenGetSessionDurationCalledShouldReturnZero() {
+        Session session = new Session(sessionStartTime);
+        double actualDuration = session.getSessionDuration();
+
+        assertEquals(0, actualDuration, 0.1);
     }
 
 }

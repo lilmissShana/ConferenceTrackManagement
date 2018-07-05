@@ -4,8 +4,9 @@ public class Talk {
 
     public enum Duration {
         LIGHTING(5), FIFTEEN_MINS(15), THIRTY_MINS(30), FORTY_FIVE_MINS(45), SIXTY_MIN(60);
-        
+
         private int duration;
+
         Duration(final int duration) {
             this.duration = duration;
         }
@@ -18,11 +19,6 @@ public class Talk {
 
     private String title;
     private Duration duration;
-
-    // TODO: there are fixed options for talk durations right? You could make an enum of them and
-    // embed it in this class (which then makes this more type-safe and descriptive)
-    // TODO: you could then encapsulate the types of talk (Lightning and normal or whatever its
-    // called in the types, which will read really nicely)
 
     /**
      * @param duration
