@@ -7,7 +7,9 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import sd.co.uk.util.TalkDuration;
+import sd.co.uk.domain.Talk.Duration;
+
+
 
 public class TrackTest {
 
@@ -17,12 +19,12 @@ public class TrackTest {
 
     @Before
     public void setUp() throws Exception {
-        ScheduledTalk t1 = new ScheduledTalk("talk1", TalkDuration.SIXTY_MIN, LocalTime.NOON);
-        ScheduledTalk t2 = new ScheduledTalk("talk2", TalkDuration.SIXTY_MIN, LocalTime.NOON);
-        ScheduledTalk t3 = new ScheduledTalk("talk3", TalkDuration.SIXTY_MIN, LocalTime.NOON);
-        ScheduledTalk t4 = new ScheduledTalk("talk4", TalkDuration.SIXTY_MIN, LocalTime.NOON);
-        ScheduledTalk t5 = new ScheduledTalk("talk5", TalkDuration.LIGHTING, LocalTime.NOON);
-        ScheduledTalk t6 = new ScheduledTalk("talk6", TalkDuration.LIGHTING, LocalTime.NOON);
+        ScheduledTalk t1 = new ScheduledTalk("talk1", Duration.SIXTY_MIN, LocalTime.NOON);
+        ScheduledTalk t2 = new ScheduledTalk("talk2", Duration.SIXTY_MIN, LocalTime.NOON);
+        ScheduledTalk t3 = new ScheduledTalk("talk3", Duration.SIXTY_MIN, LocalTime.NOON);
+        ScheduledTalk t4 = new ScheduledTalk("talk4", Duration.SIXTY_MIN, LocalTime.NOON);
+        ScheduledTalk t5 = new ScheduledTalk("talk5", Duration.LIGHTING, LocalTime.NOON);
+        ScheduledTalk t6 = new ScheduledTalk("talk6", Duration.LIGHTING, LocalTime.NOON);
         LocalTime m_start_time = LocalTime.parse("09:00");
         LocalTime a_start_time = LocalTime.parse("13:00");
 
@@ -46,12 +48,12 @@ public class TrackTest {
     // TODO: you can make this "assertTrue", and some of the ones below also
     @Test
     public void testGetMorning_session() {
-        assertEquals(true, track.getMorning_session().equals(morningSession));
+        assertTrue(true, track.getMorningSession().equals(morningSession));
     }
 
     @Test
     public void testGetAfternoon_session() {
-        assertEquals(true, track.getAfternoon_session().equals(afternoonSession));
+        assertEquals(true, track.getAfternoonSession().equals(afternoonSession));
     }
 
     @Test
@@ -59,11 +61,11 @@ public class TrackTest {
         double actualTime = track.getTotalTalksDuration();
         double expectedTime = 0;
 
-        for (ScheduledTalk t : track.getAfternoon_session().getScheduledTalkList()) {
-            expectedTime += t.getDuration().getTalkDurationAsInt();
+        for (ScheduledTalk t : track.getAfternoonSession().getScheduledTalkList()) {
+            expectedTime += t.getDurationAsInt();
         }
-        for (ScheduledTalk t : track.getMorning_session().getScheduledTalkList()) {
-            expectedTime += t.getDuration().getTalkDurationAsInt();
+        for (ScheduledTalk t : track.getMorningSession().getScheduledTalkList()) {
+            expectedTime += t.getDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }

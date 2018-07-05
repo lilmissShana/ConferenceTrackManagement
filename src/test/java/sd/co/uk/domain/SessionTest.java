@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import sd.co.uk.util.TalkDuration;
+import sd.co.uk.domain.Talk.Duration;
 
 public class SessionTest {
 
@@ -15,8 +15,8 @@ public class SessionTest {
     @Before
     public void setUp() throws Exception {
 
-        ScheduledTalk t1 = new ScheduledTalk("talk1", TalkDuration.SIXTY_MIN, LocalTime.NOON);
-        ScheduledTalk t2 = new ScheduledTalk("talk2", TalkDuration.LIGHTING, LocalTime.NOON);
+        ScheduledTalk t1 = new ScheduledTalk("talk1", Duration.SIXTY_MIN, LocalTime.NOON);
+        ScheduledTalk t2 = new ScheduledTalk("talk2", Duration.LIGHTING, LocalTime.NOON);
 
         LocalTime m_start_time = LocalTime.parse("09:00");
         session = new Session(m_start_time);
@@ -31,8 +31,8 @@ public class SessionTest {
         double actualTime = session.getSessionDuration();
         double expectedTime = 0;
 
-        for (ScheduledTalk t : session.getScheduledTalkList()) {
-            expectedTime += t.getDuration().getTalkDurationAsInt();
+        for (ScheduledTalk talk : session.getScheduledTalkList()) {
+            expectedTime += talk.getDurationAsInt();
         }
         assertEquals(expectedTime, actualTime, 0.1);
     }

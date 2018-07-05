@@ -3,47 +3,47 @@ package sd.co.uk.conference;
 import java.util.ArrayList;
 
 import sd.co.uk.domain.Talk;
-import sd.co.uk.util.TalkDuration;
+import sd.co.uk.domain.Talk.Duration;
 
 public class ConferenceCommittee {
 
-    // TODO: rename "organiseTalk" to "acceptTalkSubmission", rename "talkList" to "currentlyPlannedTalks" and rename "line" to "talkSubmissionToProcess"?
-    public static ArrayList<Talk> organiseTalk(String line, ArrayList<Talk> talkList)
+
+    public static ArrayList<Talk> acceptTalkSubmission(String talkSubmissionToProcess, ArrayList<Talk> currentlyPlannedTalks)
             throws Exception {
         Talk talk;
 
-        if (line.contains("lightning")) {
-            talk = new Talk(line, TalkDuration.LIGHTING);
-            talkList.add(talk);
+        if (talkSubmissionToProcess.contains("lightning")) {
+            talk = new Talk(talkSubmissionToProcess, Duration.LIGHTING);
+            currentlyPlannedTalks.add(talk);
 
-        } else if (line.contains("min")) {
+        } else if (talkSubmissionToProcess.contains("min")) {
 
-            String title = line.substring(0, line.length() - 5);
+            String title = talkSubmissionToProcess.substring(0, talkSubmissionToProcess.length() - 5);
             title = title.trim();
-            int time = Integer.parseInt(line.substring(title.length(), line.length() - 3).trim());
+            int time = Integer.parseInt(talkSubmissionToProcess.substring(title.length(), talkSubmissionToProcess.length() - 3).trim());
             talk = new Talk(title, convertTime(time));
-            talkList.add(talk);
+            currentlyPlannedTalks.add(talk);
 
         } else {
-            throw new Exception("Cant organise talk - " + line);
+            throw new Exception("Cant organise talk - " + talkSubmissionToProcess);
         }
-        return talkList;
+        return currentlyPlannedTalks;
     }
 
     /**
-     * Converts int to TalkDuration
+     * Converts int to Duration
      * 
-     * @return TalkDuration
+     * @return Duration
      */
-    private static TalkDuration convertTime(int time) {
+    private static Duration convertTime(int time) {
 
         if (time == 30) {
-            return TalkDuration.THIRTY_MINS;
+            return Duration.THIRTY_MINS;
         } else if (time == 45) {
-            return TalkDuration.FORTY_FIVE_MINS;
+            return Duration.FORTY_FIVE_MINS;
 
         } else if (time == 60) {
-            return TalkDuration.SIXTY_MIN;
+            return Duration.SIXTY_MIN;
 
         } else {
             throw new IllegalArgumentException("Not a valid talk duration");

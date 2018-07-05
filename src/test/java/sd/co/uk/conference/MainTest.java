@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sd.co.uk.conference.ConferenceCommittee;
-import sd.co.uk.conference.Main;
+import sd.co.uk.conference.ConferenceManager;
 import sd.co.uk.domain.Talk;
 
 // TODO: the aim is that the tests in this class are very few, because that means you've pulled encapsulated things nicely
@@ -28,7 +28,7 @@ public class MainTest {
     public void testFileReading() throws Exception {
         String[] args = new String[1];
         args[0] = testFile;
-        Main.main(args);
+        ConferenceManager.main(args);
 
     }
 
@@ -39,7 +39,7 @@ public class MainTest {
         args[0] = testFile + "test";
 
     try{
-            Main.main(args);
+            ConferenceManager.main(args);
         } catch (Exception e) {
             assertEquals(e.getMessage(), "File cant be found - " + testFile + "test"); // TODO: check spelling in assertion messages
             throw e;
@@ -56,7 +56,7 @@ public class MainTest {
         String title = "Single Talk";
         try{
             
-            ConferenceCommittee.organiseTalk(title, new ArrayList<Talk>());
+            ConferenceCommittee.acceptTalkSubmission(title, new ArrayList<Talk>());
         } catch (Exception e) {
             assertEquals(e.getMessage(), "Cant organise talk - " + title); // TODO: check spelling in assertion messages
             throw e;

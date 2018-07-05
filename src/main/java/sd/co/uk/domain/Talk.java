@@ -1,11 +1,23 @@
 package sd.co.uk.domain;
 
-import sd.co.uk.util.TalkDuration;
-
 public class Talk {
 
+    public enum Duration {
+        LIGHTING(5), FIFTEEN_MINS(15), THIRTY_MINS(30), FORTY_FIVE_MINS(45), SIXTY_MIN(60);
+        
+        private int duration;
+        Duration(final int duration) {
+            this.duration = duration;
+        }
+
+        public int getDurationAsInt() {
+            return duration;
+        }
+    };
+
+
     private String title;
-    private TalkDuration duration;
+    private Duration duration;
 
     // TODO: there are fixed options for talk durations right? You could make an enum of them and
     // embed it in this class (which then makes this more type-safe and descriptive)
@@ -16,7 +28,7 @@ public class Talk {
      * @param duration
      * @param title
      */
-    public Talk(String title, TalkDuration duration) {
+    public Talk(String title, Duration duration) {
         if (title.isEmpty() || title == null) {
             throw new IllegalArgumentException("Title can't be null or empty");
         } else {
@@ -29,8 +41,15 @@ public class Talk {
     /**
      * @return the duration
      */
-    public TalkDuration getDuration() {
+    public Duration getDuration() {
         return duration;
+    }
+
+    /**
+     * @return the duration as int
+     */
+    public int getDurationAsInt() {
+        return duration.getDurationAsInt();
     }
 
     /**
@@ -49,11 +68,10 @@ public class Talk {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + duration.getTalkDurationAsInt();
+        result = prime * result + ((duration == null) ? 0 : duration.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         return result;
     }
-
 
     /*
      * (non-Javadoc)
@@ -81,5 +99,7 @@ public class Talk {
 
 
 
+
 }
+
 

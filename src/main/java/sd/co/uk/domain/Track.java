@@ -49,20 +49,18 @@ public final class Track {
     }
 
     /**
-     * @return the morning_session
+     * @return the morningSession
      */
-    // TODO: method naming!
-    public Session getMorning_session() {
+    public Session getMorningSession() {
         Session session = morningSession;
         return session;
     }
 
 
     /**
-     * @return the afternoon_session
+     * @return the afternoonSession
      */
-    // TODO: method naming!
-    public Session getAfternoon_session() {
+    public Session getAfternoonSession() {
         Session session = afternoonSession;
         return session;
     }
@@ -80,8 +78,7 @@ public final class Track {
     /**
      * @return the start_time
      */
-    // TODO: method naming!
-    public LocalTime getStart_time() {
+    public LocalTime getStartTime() {
         return morningSession.getSessionStartTime();
     }
 
@@ -126,8 +123,6 @@ public final class Track {
         return output;
     }
 
-
-
     /*
      * (non-Javadoc)
      * 
@@ -138,14 +133,8 @@ public final class Track {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((afternoonSession == null) ? 0 : afternoonSession.hashCode());
-        result = prime * result
-                + ((afternoonStartTime == null) ? 0 : afternoonStartTime.hashCode());
-        result = prime * result + ((lunchStartTime == null) ? 0 : lunchStartTime.hashCode());
         result = prime * result + ((morningSession == null) ? 0 : morningSession.hashCode());
-        result = prime * result + ((morningStartTime == null) ? 0 : morningStartTime.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result
-                + ((networkEventStartTime == null) ? 0 : networkEventStartTime.hashCode());
         return result;
     }
 
@@ -168,38 +157,19 @@ public final class Track {
                 return false;
         } else if (!afternoonSession.equals(other.afternoonSession))
             return false;
-        if (afternoonStartTime == null) {
-            if (other.afternoonStartTime != null)
-                return false;
-        } else if (!afternoonStartTime.equals(other.afternoonStartTime))
-            return false;
-        if (lunchStartTime == null) {
-            if (other.lunchStartTime != null)
-                return false;
-        } else if (!lunchStartTime.equals(other.lunchStartTime))
-            return false;
         if (morningSession == null) {
             if (other.morningSession != null)
                 return false;
         } else if (!morningSession.equals(other.morningSession))
-            return false;
-        if (morningStartTime == null) {
-            if (other.morningStartTime != null)
-                return false;
-        } else if (!morningStartTime.equals(other.morningStartTime))
             return false;
         if (name == null) {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
             return false;
-        if (networkEventStartTime == null) {
-            if (other.networkEventStartTime != null)
-                return false;
-        } else if (!networkEventStartTime.equals(other.networkEventStartTime))
-            return false;
         return true;
     }
+
 
 
 

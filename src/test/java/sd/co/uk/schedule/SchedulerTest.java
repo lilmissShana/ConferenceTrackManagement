@@ -10,8 +10,9 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import sd.co.uk.domain.Talk;
+import sd.co.uk.domain.Talk.Duration;
 import sd.co.uk.domain.Track;
-import sd.co.uk.util.TalkDuration;
+
 
 public class SchedulerTest {
 
@@ -26,26 +27,26 @@ public class SchedulerTest {
 
     @Test
     public void testTestconf() {
-        Talk t1 = new Talk("talk1", TalkDuration.SIXTY_MIN);
-        Talk t2 = new Talk("talk2", TalkDuration.THIRTY_MINS);
-        Talk t3 = new Talk("talk3", TalkDuration.SIXTY_MIN);
-        Talk t4 = new Talk("talk4", TalkDuration.LIGHTING);
-        Talk t5 = new Talk("talk5", TalkDuration.SIXTY_MIN);
-        Talk t6 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t7 = new Talk("talk6", TalkDuration.THIRTY_MINS);
-        Talk t8 = new Talk("talk6", TalkDuration.LIGHTING);
-        Talk t9 = new Talk("talk6", TalkDuration.LIGHTING);
-        Talk t10 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t11 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t12 = new Talk("talk6", TalkDuration.THIRTY_MINS);
-        Talk t13 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t14 = new Talk("talk6", TalkDuration.LIGHTING);
-        Talk t15 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t16 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t17 = new Talk("talk6", TalkDuration.THIRTY_MINS);
-        Talk t18 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t19 = new Talk("talk6", TalkDuration.SIXTY_MIN);
-        Talk t20 = new Talk("talk6", TalkDuration.SIXTY_MIN);
+        Talk t1 = new Talk("talk1", Duration.SIXTY_MIN);
+        Talk t2 = new Talk("talk2", Duration.THIRTY_MINS);
+        Talk t3 = new Talk("talk3", Duration.SIXTY_MIN);
+        Talk t4 = new Talk("talk4", Duration.LIGHTING);
+        Talk t5 = new Talk("talk5", Duration.SIXTY_MIN);
+        Talk t6 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t7 = new Talk("talk6", Duration.THIRTY_MINS);
+        Talk t8 = new Talk("talk6", Duration.LIGHTING);
+        Talk t9 = new Talk("talk6", Duration.LIGHTING);
+        Talk t10 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t11 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t12 = new Talk("talk6", Duration.THIRTY_MINS);
+        Talk t13 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t14 = new Talk("talk6", Duration.LIGHTING);
+        Talk t15 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t16 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t17 = new Talk("talk6", Duration.THIRTY_MINS);
+        Talk t18 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t19 = new Talk("talk6", Duration.SIXTY_MIN);
+        Talk t20 = new Talk("talk6", Duration.SIXTY_MIN);
         talkList.add(t1);
         talkList.add(t2);
         talkList.add(t3);
@@ -64,7 +65,7 @@ public class SchedulerTest {
         talkList.add(t16);
         talkList.add(t17);
         talkList.add(t18);
-        Scheduler conf = new Scheduler();
+        ConferenceAutoScheduler conf = new ConferenceAutoScheduler();
         ArrayList<Track> trackList = null;
         try {
             trackList = conf.scheduleTalks(talkList);
@@ -81,25 +82,25 @@ public class SchedulerTest {
 
     @Test
     public void testTestconfTwoTracks() {
-        Talk t1 = new Talk("talk1", TalkDuration.SIXTY_MIN);
-        Talk t2 = new Talk("talk2", TalkDuration.FORTY_FIVE_MINS);
-        Talk t3 = new Talk("talk3", TalkDuration.THIRTY_MINS);
-        Talk t4 = new Talk("talk4", TalkDuration.FORTY_FIVE_MINS);
-        Talk t5 = new Talk("talk5", TalkDuration.FORTY_FIVE_MINS);
-        Talk t6 = new Talk("talk6", TalkDuration.LIGHTING);
-        Talk t7 = new Talk("talk7", TalkDuration.SIXTY_MIN);
-        Talk t8 = new Talk("talk8", TalkDuration.FORTY_FIVE_MINS);
-        Talk t9 = new Talk("talk9", TalkDuration.THIRTY_MINS);
-        Talk t10 = new Talk("talk10", TalkDuration.THIRTY_MINS);
-        Talk t11 = new Talk("talk11", TalkDuration.FORTY_FIVE_MINS);
-        Talk t12 = new Talk("talk12", TalkDuration.SIXTY_MIN);
-        Talk t13 = new Talk("talk13", TalkDuration.SIXTY_MIN);
-        Talk t14 = new Talk("talk14", TalkDuration.FORTY_FIVE_MINS);
-        Talk t15 = new Talk("talk15", TalkDuration.THIRTY_MINS);
-        Talk t16 = new Talk("talk16", TalkDuration.THIRTY_MINS);
-        Talk t17 = new Talk("talk17", TalkDuration.SIXTY_MIN);
-        Talk t18 = new Talk("talk18", TalkDuration.THIRTY_MINS);
-        Talk t19 = new Talk("talk19", TalkDuration.THIRTY_MINS);
+        Talk t1 = new Talk("talk1", Duration.SIXTY_MIN);
+        Talk t2 = new Talk("talk2", Duration.FORTY_FIVE_MINS);
+        Talk t3 = new Talk("talk3", Duration.THIRTY_MINS);
+        Talk t4 = new Talk("talk4", Duration.FORTY_FIVE_MINS);
+        Talk t5 = new Talk("talk5", Duration.FORTY_FIVE_MINS);
+        Talk t6 = new Talk("talk6", Duration.LIGHTING);
+        Talk t7 = new Talk("talk7", Duration.SIXTY_MIN);
+        Talk t8 = new Talk("talk8", Duration.FORTY_FIVE_MINS);
+        Talk t9 = new Talk("talk9", Duration.THIRTY_MINS);
+        Talk t10 = new Talk("talk10", Duration.THIRTY_MINS);
+        Talk t11 = new Talk("talk11", Duration.FORTY_FIVE_MINS);
+        Talk t12 = new Talk("talk12", Duration.SIXTY_MIN);
+        Talk t13 = new Talk("talk13", Duration.SIXTY_MIN);
+        Talk t14 = new Talk("talk14", Duration.FORTY_FIVE_MINS);
+        Talk t15 = new Talk("talk15", Duration.THIRTY_MINS);
+        Talk t16 = new Talk("talk16", Duration.THIRTY_MINS);
+        Talk t17 = new Talk("talk17", Duration.SIXTY_MIN);
+        Talk t18 = new Talk("talk18", Duration.THIRTY_MINS);
+        Talk t19 = new Talk("talk19", Duration.THIRTY_MINS);
 
         talkList.add(t1);
         talkList.add(t2);
@@ -120,7 +121,7 @@ public class SchedulerTest {
         talkList.add(t17);
         talkList.add(t18);
         talkList.add(t19);
-        Scheduler conf = new Scheduler();
+        ConferenceAutoScheduler conf = new ConferenceAutoScheduler();
         ArrayList<Track> trackList = null;
         try {
             trackList = conf.scheduleTalks(talkList);
@@ -131,11 +132,11 @@ public class SchedulerTest {
 
         for (Track track : trackList) {
             assertEquals(LocalTime.parse("09:00"),
-                    track.getMorning_session().getSessionStartTime());
-            assertEquals(track.getMorning_session().getSessionDuration(), 180);
+                    track.getMorningSession().getSessionStartTime());
+            assertEquals(track.getMorningSession().getSessionDuration(), 180);
             assertEquals(LocalTime.parse("13:00"),
-                    track.getAfternoon_session().getSessionStartTime());
-            LocalTime endTime = track.getAfternoon_session().getSessionEndTime();
+                    track.getAfternoonSession().getSessionStartTime());
+            LocalTime endTime = track.getAfternoonSession().getSessionEndTime();
 
             if (!endTime.isAfter(LocalTime.parse("15:59"))
                     && !endTime.isBefore(LocalTime.parse("17:00"))) {
@@ -150,37 +151,37 @@ public class SchedulerTest {
 
     @Test (expected = Exception.class)
     public void giveThatOnlyTwoTalksExistShouldReturnError() throws Exception {
-        Talk talk1 = new Talk("talk1", TalkDuration.FORTY_FIVE_MINS);
-        Talk talk2 = new Talk("talk2", TalkDuration.FORTY_FIVE_MINS);
+        Talk talk1 = new Talk("talk1", Duration.FORTY_FIVE_MINS);
+        Talk talk2 = new Talk("talk2", Duration.FORTY_FIVE_MINS);
 
         ArrayList<Talk> talkList = new ArrayList<Talk>();
         talkList.add(talk1);
         talkList.add(talk2);
-        Scheduler conf = new Scheduler();
+        ConferenceAutoScheduler conf = new ConferenceAutoScheduler();
         conf.scheduleTalks(talkList);
     }
 
     @Test
     public void givenOneAndAHalfDaysofTalksShouldReturnTwoTracks() {
-        Talk t1 = new Talk("talk1", TalkDuration.SIXTY_MIN);
-        Talk t2 = new Talk("talk2", TalkDuration.FORTY_FIVE_MINS);
-        Talk t3 = new Talk("talk3", TalkDuration.THIRTY_MINS);
-        Talk t4 = new Talk("talk4", TalkDuration.FORTY_FIVE_MINS);
-        Talk t5 = new Talk("talk5", TalkDuration.FORTY_FIVE_MINS);
-        Talk t6 = new Talk("talk6", TalkDuration.LIGHTING);
-        Talk t7 = new Talk("talk7", TalkDuration.SIXTY_MIN);
-        Talk t8 = new Talk("talk8", TalkDuration.FORTY_FIVE_MINS);
-        Talk t9 = new Talk("talk9", TalkDuration.THIRTY_MINS);
-        Talk t10 = new Talk("talk10", TalkDuration.THIRTY_MINS);
-        Talk t11 = new Talk("talk11", TalkDuration.FORTY_FIVE_MINS);
-        Talk t12 = new Talk("talk12", TalkDuration.SIXTY_MIN);
-        Talk t13 = new Talk("talk13", TalkDuration.SIXTY_MIN);
-        Talk t14 = new Talk("talk14", TalkDuration.FORTY_FIVE_MINS);
-        Talk t15 = new Talk("talk15", TalkDuration.THIRTY_MINS);
-        Talk t16 = new Talk("talk16", TalkDuration.THIRTY_MINS);
-        Talk t17 = new Talk("talk17", TalkDuration.SIXTY_MIN);
-        Talk t18 = new Talk("talk18", TalkDuration.THIRTY_MINS);
-        Talk t19 = new Talk("talk19", TalkDuration.THIRTY_MINS);
+        Talk t1 = new Talk("talk1", Duration.SIXTY_MIN);
+        Talk t2 = new Talk("talk2", Duration.FORTY_FIVE_MINS);
+        Talk t3 = new Talk("talk3", Duration.THIRTY_MINS);
+        Talk t4 = new Talk("talk4", Duration.FORTY_FIVE_MINS);
+        Talk t5 = new Talk("talk5", Duration.FORTY_FIVE_MINS);
+        Talk t6 = new Talk("talk6", Duration.LIGHTING);
+        Talk t7 = new Talk("talk7", Duration.SIXTY_MIN);
+        Talk t8 = new Talk("talk8", Duration.FORTY_FIVE_MINS);
+        Talk t9 = new Talk("talk9", Duration.THIRTY_MINS);
+        Talk t10 = new Talk("talk10", Duration.THIRTY_MINS);
+        Talk t11 = new Talk("talk11", Duration.FORTY_FIVE_MINS);
+        Talk t12 = new Talk("talk12", Duration.SIXTY_MIN);
+        Talk t13 = new Talk("talk13", Duration.SIXTY_MIN);
+        Talk t14 = new Talk("talk14", Duration.FORTY_FIVE_MINS);
+        Talk t15 = new Talk("talk15", Duration.THIRTY_MINS);
+        Talk t16 = new Talk("talk16", Duration.THIRTY_MINS);
+        Talk t17 = new Talk("talk17", Duration.SIXTY_MIN);
+        Talk t18 = new Talk("talk18", Duration.THIRTY_MINS);
+        Talk t19 = new Talk("talk19", Duration.THIRTY_MINS);
 
         talkList.add(t1);
         talkList.add(t2);
@@ -201,7 +202,7 @@ public class SchedulerTest {
         talkList.add(t17);
         talkList.add(t18);
         talkList.add(t19);
-        Scheduler conf = new Scheduler();
+        ConferenceAutoScheduler conf = new ConferenceAutoScheduler();
         ArrayList<Track> trackList = null;
         try {
             trackList = conf.scheduleTalks(talkList);
@@ -213,10 +214,10 @@ public class SchedulerTest {
 
         for (Track track : trackList) {
             assertEquals(LocalTime.parse("09:00"),
-                    track.getMorning_session().getSessionStartTime());
-            assertEquals(track.getMorning_session().getSessionDuration(), 180);
+                    track.getMorningSession().getSessionStartTime());
+            assertEquals(track.getMorningSession().getSessionDuration(), 180);
             assertEquals(LocalTime.parse("13:00"),
-                    track.getAfternoon_session().getSessionStartTime());
+                    track.getAfternoonSession().getSessionStartTime());
         }
 
     }

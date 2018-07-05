@@ -2,7 +2,7 @@ package sd.co.uk.domain;
 
 import java.time.LocalTime;
 
-import sd.co.uk.util.TalkDuration;
+
 
 public final class ScheduledTalk extends Talk {
 
@@ -12,7 +12,7 @@ public final class ScheduledTalk extends Talk {
     /**
      * @param talkTime
      */
-    public ScheduledTalk(String title, TalkDuration duration, LocalTime startTime) {
+    public ScheduledTalk(String title, Duration duration, LocalTime startTime) {
         super(title, duration);
         this.startTime = startTime;
     }
@@ -33,7 +33,7 @@ public final class ScheduledTalk extends Talk {
      */
     public LocalTime getEndTime() {
         
-        LocalTime endTime = this.startTime.plusMinutes(getDuration().getTalkDurationAsInt());
+        LocalTime endTime = this.startTime.plusMinutes(getDurationAsInt());
         return endTime;
     }
 
